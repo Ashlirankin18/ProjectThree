@@ -1,0 +1,87 @@
+body {
+  background-color: #b2d9ea;
+}
+
+.topBar {
+  border: 2px solid white;
+  float: left;
+  margin-left: 27%;
+  /* text-align: center;
+  position: absolute; */
+}
+
+.interface {
+  height: 600px;
+  width: 80%;
+  background: lightgray;
+  margin-left: 10%;
+  margin-top: 5%;
+  position: relative;
+  text-align: center;
+  border-radius: 15px;
+  float: left;
+}
+
+.activeInterface {
+  background-color: #dfc7c1;
+  top: 20%;
+  height: 400px;
+  width: 65%;
+  margin-left: 10%;
+  position: relative;
+  border-radius: 15px;
+}
+
+.textField {
+  margin-top: 22%;
+  height: 50px;
+  width: 60%;
+  border: none;
+  border-bottom: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.buttons {
+  height: 50px;
+  width: 80%;
+  top: 10%;
+  margin-left: 10%;
+  position: relative;
+}
+
+.button {
+  background-color: white;
+  float: left;
+  height: 90%;
+  width: 40%;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.button2 {
+  background-color: white;
+  float: right;
+  height: 90%;
+  width: 40%;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.scoreContainer {
+  border: 2px solid white;
+  float: left;
+  height: 99%;
+  width: 20%;
+  margin-left: 80%;
+  position: absolute;
+}
+
+.guessedScores {
+  height: 49%;
+}
+
+.highScores {
+  height: 49%;
+  border-top: 2px solid white;
+}
