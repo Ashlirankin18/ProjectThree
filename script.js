@@ -1,11 +1,11 @@
 let randomNumber = getRandom();
-let score = 0;
-const gussingHistory = [];
+let score = 10;
+const guessingHistory = [];
 let highscore = 0;
 const numberOfTries = 9;
 
 function getRandom() {
-    return Math.random() * 101;
+    return Math.trunc(Math.random() * 101);
 }
 
 function getNum() {
@@ -13,19 +13,35 @@ function getNum() {
     return guessedNumber;
 }
 
+function updateTryHistory(guessedNumber) {
+    const paragraph = document.createElement("P");
+    const text = document.createTextNode(guessedNumber);
+    let parentDiv = document.getElementById("historySection");
+    paragraph.appendChild(text);
+    parentDiv.appendChild(paragraph);
+}
+
+function updateScore() {
+    score -= 1;
+    //Update score label.
+}
+
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', function () {
-    console.log(randomNumber)
-       let guessedNumber = getNum()
+       let guessedNumber = Number(getNum());
+      updateTryHistory(guessedNumber);
         if (guessedNumber === 0) {
             document.querySelector("h1").textContent = "The number must bet between 0 - 100";
+            updateScore();
         } else if (guessedNumber === "") {
             document.querySelector("h1").textContent = "You must enter a valid number";
         } else if (guessedNumber > randomNumber) {
             document.querySelector("h1").textContent = "Too High!";
+            updateScore();
         } else if (guessedNumber < randomNumber) {
             document.querySelector("h1").textContent = "Too Low";
+            updateScore();
         } else if (guessedNumber === randomNumber) {
-            document.querySelector("h1").textContent =  document.querySelector("h1").textContent = "Winner!";
+            document.querySelector("h1").textContent = "Winner!";
         }
 });
