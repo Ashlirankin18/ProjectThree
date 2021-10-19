@@ -7,9 +7,8 @@
   </head>
   <body>
 
-
       <div class="interface">
-
+        
         <div class="topBar">
           <div class="instructions">
             <h3>Guess the number between 1 and 100!</h3>
@@ -19,7 +18,7 @@
 
         <div class="scoreContainer">
 
-          <div class="guessedScores">
+          <div id ="guessedScores" class="guessedScores">
             Guessed Scores
           </div>
 
@@ -30,34 +29,38 @@
         </div>
 
         <div class="activeInterface">
+          
+            <img id="0" class="imageLives" src="images/0030.png" alt="" srcset="">
+            <img id="1" class="imageLives" src="images/0031.png" alt="" srcset="">
+            <img id="2" class="imageLives" src="images/0032.png" alt="" srcset="">
+            <img id="3" class="imageLives" src="images/0033.png" alt="" srcset="">
+            <img id="4" class="imageLives" src="images/0034.png" alt="" srcset="">
+            <img id="5" class="imageLives" src="images/0035.png" alt="" srcset="">
+            <img id="6" class="imageLives" src="images/0036.png" alt="" srcset="">
+            <img id="7" class="imageLives" src="images/0037.png" alt="" srcset="">
+            <img id="8" class="imageLives" src="images/0038.png" alt="" srcset="">
+            <img id="9" class="imageLives" src="images/0039.png" alt="" srcset="">
+           </div>
+         <div id="imageDiv" class="imageDiv">
+           <img id="image" src="images/face_with_rolling_eyes.gif" alt="" srcset="">
+         </div>
 
           <div class="textFieldDiv">
-            <input class="textField" placeholder="Guess the number between 1 and 100!" type="text" name="" value="">
+            <input id="guessField" class="textField" placeholder="Guess a number between 1 and 100!" type="text" name="" value="">
 
           </div>
 
           <div class="buttons">
-            <button class="button" type="button" name="button">GUESS</button>
+            <button id= "guessButton" class="button" type="button" name="button">GUESS</button>
 
-            <button class="button2" type="button" name="button">RESET</button>
+            <button id="button2" class="button2" type="button" name="button">RESET</button>
 
           </div>
-
-
+         
         </div>
-
+        <canvas class="confetti" id="canvas"></canvas>
       </div>
-
-
-
-
-
-
-    <!-- ADD EVENT LISTENER FOR RESET AND CHECK NUMBER BUTTONS -->
-
-    <script type="text/javascript" src="scipt.js">
-
+    <script type="text/javascript" src="script.js">
     </script>
-
   </body>
 </html>
