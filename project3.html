@@ -8,21 +8,16 @@
   <body>
 
       <div class="interface">
-        
         <div class="topBar">
           <div class="instructions">
-            <h3>Guess the number between 1 and 100!</h3>
+            <div class="slide"><h3>Guess the number between 1 and 100!</h3></div>
           </div>
-
         </div>
 
         <div class="scoreContainer">
 
-          <div class="guessedScoresDiv">
-            Guessed Scores
-          </div>
           <div id ="guessedScores" class="guessedScores">
-            
+            Guessed Scores
           </div>
 
           <div class="highScores">
@@ -32,7 +27,7 @@
         </div>
 
         <div class="activeInterface">
-          
+
             <img id="0" class="imageLives" src="images/0030.png" alt="" srcset="">
             <img id="1" class="imageLives" src="images/0031.png" alt="" srcset="">
             <img id="2" class="imageLives" src="images/0032.png" alt="" srcset="">
@@ -46,21 +41,38 @@
            </div>
          <div id="imageDiv" class="imageDiv">
            <img id="image" src="images/face_with_rolling_eyes.gif" alt="" srcset="">
-           <h2 id="promptLabel" class="promptLabel">Test your luck!</h2>
          </div>
+
+         <!-- RANGE SLIDER & TEXT FIELD -->
+        <div class="sliderTextContainer">
+
+          <div class="sliderContainer">
+           <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
+
+          <div class="textFieldDiv">
+            <input id="guessField" class="textField" placeholder="" type="text" name="" value="">
+          </div>
+
+        </div>
+
+          <!-- <div class="sliderContainer">
+           <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          </div>
 
           <div class="textFieldDiv">
             <input id="guessField" class="textField" placeholder="Guess a number between 1 and 100!" type="text" name="" value="">
-
           </div>
+
+        </div> -->
 
           <div class="buttons">
-            <button id= "guessButton" class="button guessButton" type="button" name="button">GUESS</button>
+            <button id= "guessButton" class="button" type="button" name="button">GUESS</button>
 
-            <button id="button2" class="button" type="button" name="button">RESET</button>
+            <button id="resetButton" class="button2" type="button" name="button">RESET</button>
 
           </div>
-         
+
         </div>
         <canvas class="confetti" id="canvas"></canvas>
       </div>
