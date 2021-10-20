@@ -28,6 +28,19 @@ const colors = [{ front: 'red', back: 'darkred' },
 { front: 'turquoise', back: 'darkturquoise' }];
 
 
+function updateGuessButtonWinnerStyle() {
+  const guessButton = document.getElementById('guessButton');
+  guessButton.style.color = "white";
+  guessButton.disabled = true;
+  guessButton.style.backgroundColor = "red";
+}
+
+function updateGuessButtonResetStyle() {
+  const guessButton = document.getElementById('guessButton');
+  guessButton.style.color = "white";
+  guessButton.disabled = false;
+  guessButton.style.backgroundColor = "gold";
+}
 
 function getRandom() {
     return Math.trunc(Math.random() * 101);
@@ -44,6 +57,9 @@ function clearTextFiled() {
 
 function updateTryHistory(guessedNumber) {
     const paragraph = document.createElement("P");
+    paragraph.style.textAlign = "left";
+    paragraph.style.float = "left";
+    paragraph.style.marginLeft = "60px";
     const text = document.createTextNode(guessedNumber);
     let parentDiv = document.getElementById("guessedScores");
     paragraph.appendChild(text);
@@ -66,40 +82,58 @@ submitButton.addEventListener('click', function () {
         if (guessedNumber.length === 0) {
             const image = document.getElementById("image");
             image.src = "images/speak_no_evil_monkey.gif";
-        } else {
+            const promptLabel = document.getElementById("promptLabel")
+            promptLabel.textContent = "Please enter a valid number"
+        } else if (guessedNumber > 100 || guessedNumber < 1) {
+          const image = document.getElementById("image");
+          image.src = "images/woman_facepalming.gif";
+          const promptLabel = document.getElementById("promptLabel")
+            promptLabel.textContent = "Number must be between 1 - 100"
+          updateScore();
+      }else {
             guessedNumber = Number(getNum())
 
             if (guessedNumber === 0) {
                 const image = document.getElementById("image");
                 image.src = "images/woman_facepalming.gif";
+                const promptLabel = document.getElementById("promptLabel")
+                promptLabel.textContent = "Number must be between 0 - 100!"
                 updateScore();
             } 
             
-            if (guessedNumber > 100 || guessedNumber < 1) {
-                const image = document.getElementById("image");
-                image.src = "images/woman_facepalming.gif";
-                updateScore();
-            }
-
             if (randomNumber < guessedNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/backhand_index_pointing_down.gif";
+                const promptLabel = document.getElementById("promptLabel")
+                promptLabel.textContent = "Lower"
                 updateScore();
             }
             
             if (randomNumber > guessedNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/backhand_index_pointing_up.gif";
+                const promptLabel = document.getElementById("promptLabel")
+                promptLabel.textContent = "Higher"
                 updateScore();
             } 
     
             if (guessedNumber === randomNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/trophy.gif";
-                initConfetti();
                 const canvas = document.getElementById("canvas");
+                const promptLabel = document.getElementById("promptLabel");
+                promptLabel.textContent = "Winner!";
+                initConfetti();
                 canvas.style.opacity = 1;
                 render();
+                updateGuessButtonWinnerStyle();
+            }
+
+            if (0 === score) {
+              const image = document.getElementById("image");
+                image.src = "images/bomb.gif";
+                const promptLabel = document.getElementById("promptLabel")
+                promptLabel.textContent = "Game Over"
             }
     }
     clearTextFiled()
@@ -109,6 +143,12 @@ const resetButton = document.getElementById('button2');
 resetButton.addEventListener("click", function() {
 const canvas = document.getElementById("canvas");
 canvas.style.opacity = 0;
+const image = document.getElementById("image");
+image.src = "images/face_with_rolling_eyes.gif";
+const promptLabel = document.getElementById("promptLabel");
+promptLabel.textContent = "Test your luck!";
+updateGuessButtonResetStyle();
+score = 10;
 })
 
 
