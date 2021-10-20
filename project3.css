@@ -4,10 +4,15 @@ body {
 
 .topBar {
   border: 2px solid white;
+  width: 79.7%;
   float: left;
-  margin-left: 27%;
-  /* text-align: center;
-  position: absolute; */
+  text-transform: uppercase;
+  animation: movetopBar 15s linear infinite;
+}
+
+@keyframes movetopBar {
+  from {transform: translateX(24%);}
+  to {transform: translateX(-22%);}
 }
 
 .interface {
@@ -32,21 +37,38 @@ body {
   border-radius: 15px;
 }
 
+.sliderTextContainer {
+  border: 2px solid red;
+  width: 54.5%;
+  position: absolute;
+  margin: 30% 0% 0% 15%;
+}
+
+.sliderContainer {
+  border: 2px solid blue;
+  width: 40%;
+  margin-top: 2.5%;
+  position: relative;
+  float: left;
+}
+
 .textField {
-  margin-top: 22%;
   height: 50px;
-  width: 30%;
-  left: -30%;
+  width: 40%;
+  margin-left: 10%;
   border: none;
   border-bottom: 2px solid white;
   border-radius: 10px;
   position: relative;
+  float: left;
+  text-align: center;
+  font-size: 16px;
 }
 
 .buttons {
   height: 50px;
   width: 40%;
-  top: 10%;
+  top: 60%;
   margin-left: 22%;
   position: relative;
 }
@@ -57,12 +79,16 @@ body {
   height: 90%;
   width: 40%;
   border-style: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.guessButton{
-  background-color: gold;
-  color: white;
+.button2 {
+  background-color: white;
+  float: right;
+  height: 90%;
+  width: 40%;
+  border-style: none;
+  border-radius: 5px;
 }
 
 .scoreContainer {
@@ -76,16 +102,6 @@ body {
 
 .guessedScores {
   height: 49%;
-  width: 80%;
-  margin-left: 4%;
-}
-
-.guessedScoresDiv {
-  
-}
-
-.promptLabel {
-  color: white;
 }
 
 .highScores {
@@ -94,9 +110,11 @@ body {
 }
 
 .imageDiv {
+  border: 2px solid white;
   position: absolute;
   text-align: center;
-  margin-left: 45%;
+  margin-left: 37%;
+  margin-top: 15%;
 }
 
 .imageLives {
