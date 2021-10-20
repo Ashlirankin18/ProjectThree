@@ -1,33 +1,18 @@
 let randomNumber = getRandom();
 let score = 10;
-const guessingHistory = [];
 let highscore = 0;
-const numberOfTries = 9;
-
-
-//-----------Var Inits--------------
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-cx = ctx.canvas.width / 2;
-cy = ctx.canvas.height / 2;
-
-let confetti = [];
-const confettiCount = 600;
-const gravity = 0.5;
-const terminalVelocity = 5;
-const drag = 0.075;
-const colors = [{ front: 'red', back: 'darkred' },
-{ front: 'green', back: 'darkgreen' },
-{ front: 'blue', back: 'darkblue' },
-{ front: 'yellow', back: 'darkyellow' },
-{ front: 'orange', back: 'darkorange' },
-{ front: 'pink', back: 'darkpink' },
-{ front: 'purple', back: 'darkpurple' },
-{ front: 'turquoise', back: 'darkturquoise' }];
-
-
+let imagePaths = [
+  "images/0030.png",
+  "images/0031.png",
+  "images/0032.png",
+  "images/0033.png",
+  "images/0034.png",
+  "images/0035.png",
+  "images/0036.png",
+  "images/0037.png",
+  "images/0038.png",
+  "images/0039.png"
+]
 
 function getRandom() {
     return Math.trunc(Math.random() * 101);
@@ -54,6 +39,15 @@ function updateScore() {
     score -= 1;
     const scoreLabel = document.getElementById(score);
     scoreLabel.src = "images/1f6ab.png";
+}
+
+function resetAllLives() {
+  if score < 10 {
+    for (let index = 0; 0 < 10; index++) {
+      let scoreLabel = document.getElementById(index);
+      scoreLabel.src = imagePaths[index];
+    }
+  }
 }
 
 const submitButton = document.getElementById('guessButton');
@@ -100,6 +94,14 @@ submitButton.addEventListener('click', function () {
                 const canvas = document.getElementById("canvas");
                 canvas.style.opacity = 1;
                 render();
+                updateGuessButtonWinnerStyle();
+            }
+
+            if (0 === score) {
+              const image = document.getElementById("image");
+                image.src = "images/bomb.gif";
+                const promptLabel = document.getElementById("promptLabel")
+                promptLabel.textContent = "Game Over"
             }
     }
     clearTextFiled()
@@ -109,7 +111,64 @@ const resetButton = document.getElementById('button2');
 resetButton.addEventListener("click", function() {
 const canvas = document.getElementById("canvas");
 canvas.style.opacity = 0;
+
+const image = document.getElementById("image");
+image.src = "images/face_with_rolling_eyes.gif";
+const promptLabel = document.getElementById("promptLabel");
+promptLabel.textContent = "Test your luck!";
+updateGuessButtonResetStyle();
+score = 10;
+resetAllLives()
+
+let parentDiv = document.getElementById("guessedScores");
+parentDiv.replaceChildren([]);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-----------Var Inits--------------
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+cx = ctx.canvas.width / 2;
+cy = ctx.canvas.height / 2;
+
+let confetti = [];
+const confettiCount = 600;
+const gravity = 0.5;
+const terminalVelocity = 5;
+const drag = 0.075;
+const colors = [{ front: 'red', back: 'darkred' },
+{ front: 'green', back: 'darkgreen' },
+{ front: 'blue', back: 'darkblue' },
+{ front: 'yellow', back: 'darkyellow' },
+{ front: 'orange', back: 'darkorange' },
+{ front: 'pink', back: 'darkpink' },
+{ front: 'purple', back: 'darkpurple' },
+{ front: 'turquoise', back: 'darkturquoise' }];
 
 
 //-----------Functions--------------
