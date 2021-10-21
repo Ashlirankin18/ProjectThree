@@ -89,7 +89,7 @@ submitButton.addEventListener('click', function () {
       const resetButton = document.getElementById('resetButton');
 const promptLabel = document.getElementById("promptLabel");
 
-        if (guessedNumber.length === 0 || isNaN(guessedNumber)) {
+        if (isNaN(guessedNumber)) {
             const image = document.getElementById("image");
             image.src = "images/eyeroll.gif";
             promptLabel.textContent = "NO! Enter a number between 1 and 100!";
