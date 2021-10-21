@@ -86,14 +86,13 @@ function updateHighScoreIfNeeded() {
 const submitButton = document.getElementById('guessButton');
 submitButton.addEventListener('click', function () {
        let guessedNumber = getNum();
-      updateTryHistory(guessedNumber);
       const resetButton = document.getElementById('resetButton');
 const promptLabel = document.getElementById("promptLabel");
 
-        if (guessedNumber.length === 0) {
+        if (guessedNumber.length === 0 || isNaN(guessedNumber)) {
             const image = document.getElementById("image");
             image.src = "images/eyeroll.gif";
-            promptLabel.textContent = "NO!";
+            promptLabel.textContent = "NO! Enter a number between 1 and 100!";
         } else {
             guessedNumber = Number(getNum())
 
@@ -102,12 +101,14 @@ const promptLabel = document.getElementById("promptLabel");
                 image.src = "images/eyeroll.gif";
                 promptLabel.textContent = "WRONG! Number must be between 1 and 100!";
                 updateScore();
+                updateTryHistory(guessedNumber);
             } else {
               if (guessedNumber > 100) {
                   const image = document.getElementById("image");
                   image.src = "images/eyeroll.gif";
                   promptLabel.textContent = "Guess again!";
                   updateScore();
+                  updateTryHistory(guessedNumber);
               }
 
               if (randomNumber < guessedNumber) {
@@ -115,6 +116,7 @@ const promptLabel = document.getElementById("promptLabel");
                   image.src = "images/walkaway.gif";
                   promptLabel.textContent = "Lower!";
                   updateScore();
+                  updateTryHistory(guessedNumber);
               }
 
               if (randomNumber > guessedNumber) {
@@ -122,6 +124,7 @@ const promptLabel = document.getElementById("promptLabel");
                   image.src = "images/dontknow.gif";
                   promptLabel.textContent = "Higher!";
                   updateScore();
+                  updateTryHistory(guessedNumber);
               }
 
               if (guessedNumber === randomNumber) {
@@ -135,6 +138,7 @@ const promptLabel = document.getElementById("promptLabel");
                   updateGuessButtonWinnerStyle();
                   resetButton.style.backgroundColor = "green";
                   disableTextField();
+                  updateTryHistory(guessedNumber);
 
                   if (score > highscore) {
                     highscore = score;
