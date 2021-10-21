@@ -3,7 +3,6 @@ body {
 }
 
 .topBar {
-  border: 2px solid white;
   width: 79.7%;
   float: left;
   text-transform: uppercase;
@@ -18,7 +17,7 @@ body {
 .interface {
   height: 600px;
   width: 80%;
-  background: white;
+  background: #fbceb1;
   margin-left: 10%;
   margin-top: 5%;
   position: relative;
@@ -62,6 +61,7 @@ body {
   float: left;
   text-align: center;
   font-size: 16px;
+  color: black;
 }
 
 .buttons {
@@ -103,6 +103,12 @@ body {
   height: 49%;
 }
 
+.childGuessedScores {
+  background-color: white;
+  width: 50%;
+  position: relative;
+}
+
 .highScores {
   height: 49%;
   border-top: 2px solid black;
@@ -127,6 +133,10 @@ body {
 
 .image {
   position: absolute;
+}
+
+.promptLabel {
+  color: white;
 }
 
 .confetti{

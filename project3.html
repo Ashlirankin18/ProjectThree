@@ -18,6 +18,9 @@
 
           <div id ="guessedScores" class="guessedScores">
             Guessed Scores
+            <div class="childGuessedScores">
+
+            </div>
           </div>
 
           <div class="highScores">
@@ -41,9 +44,10 @@
            </div>
          <div id="imageDiv" class="imageDiv">
            <img id="image" src="images/face_with_rolling_eyes.gif" alt="" srcset="">
+           <h2 id="promptLabel" class="promptLabel">Test your luck!</h2>
          </div>
 
-         <!-- RANGE SLIDER & TEXT FIELD -->
+
         <div class="sliderTextContainer">
 
           <div class="sliderContainer">
@@ -51,27 +55,18 @@
           </div>
 
           <div class="textFieldDiv">
-            <input id="guessField" class="textField" placeholder="" type="text" name="" value="">
+            <input id="guessField" class="textField" placeholder="GUESS!" type="text" name="" value="">
           </div>
 
         </div>
 
-          <!-- <div class="sliderContainer">
-           <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          </div>
 
-          <div class="textFieldDiv">
-            <input id="guessField" class="textField" placeholder="Guess a number between 1 and 100!" type="text" name="" value="">
-          </div>
+        <div class="buttons">
+          <button id= "guessButton" class="button" type="button" name="button">GUESS</button>
 
-        </div> -->
+          <button id="resetButton" class="button2" type="button" name="button">RESET</button>
 
-          <div class="buttons">
-            <button id= "guessButton" class="button" type="button" name="button">GUESS</button>
-
-            <button id="resetButton" class="button2" type="button" name="button">RESET</button>
-
-          </div>
+        </div>
 
         </div>
         <canvas class="confetti" id="canvas"></canvas>

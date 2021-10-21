@@ -42,12 +42,29 @@ function updateScore() {
 }
 
 function resetAllLives() {
-  if score < 10 {
+  if (score < 10) {
     for (let index = 0; 0 < 10; index++) {
       let scoreLabel = document.getElementById(index);
       scoreLabel.src = imagePaths[index];
     }
   }
+}
+
+function updateGuessButtonWinnerStyle() {
+  const guessButton = document.getElementById('guessButton');
+  guessButton.style.color = "white";
+  guessButton.disabled = true;
+  guessButton.style.backgroundColor = "red";
+}
+
+function updateGuessButtonResetStyle() {
+  const guessButton = document.getElementById('guessButton');
+  guessButton.style.color = "white";
+  guessButton.disabled = false;
+}
+
+function disableTextField() {
+  let guessedNumber = document.getElementById('guessField').disabled = true;
 }
 
 const submitButton = document.getElementById('guessButton');
@@ -56,45 +73,53 @@ submitButton.addEventListener('click', function () {
        console.log(guessedNumber)
        console.log(randomNumber);
       updateTryHistory(guessedNumber);
+const promptLabel = document.getElementById("promptLabel");
 
         if (guessedNumber.length === 0) {
             const image = document.getElementById("image");
             image.src = "images/speak_no_evil_monkey.gif";
+            promptLabel.textContent = "NO!";
         } else {
             guessedNumber = Number(getNum())
 
             if (guessedNumber === 0) {
                 const image = document.getElementById("image");
                 image.src = "images/woman_facepalming.gif";
+                promptLabel.textContent = "WRONG! Number must be between 1 and 100!";
                 updateScore();
             }
 
             if (guessedNumber > 100 || guessedNumber < 1) {
                 const image = document.getElementById("image");
                 image.src = "images/woman_facepalming.gif";
+                promptLabel.textContent = "Guess again!";
                 updateScore();
             }
 
             if (randomNumber < guessedNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/backhand_index_pointing_down.gif";
+                promptLabel.textContent = "Lower!";
                 updateScore();
             }
 
             if (randomNumber > guessedNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/backhand_index_pointing_up.gif";
+                promptLabel.textContent = "Higher!";
                 updateScore();
             }
 
             if (guessedNumber === randomNumber) {
                 const image = document.getElementById("image");
                 image.src = "images/trophy.gif";
+                promptLabel.textContent = "WINNER!";
                 initConfetti();
                 const canvas = document.getElementById("canvas");
                 canvas.style.opacity = 1;
                 render();
                 updateGuessButtonWinnerStyle();
+                disableTextField();
             }
 
             if (0 === score) {
@@ -102,12 +127,14 @@ submitButton.addEventListener('click', function () {
                 image.src = "images/bomb.gif";
                 const promptLabel = document.getElementById("promptLabel")
                 promptLabel.textContent = "Game Over"
+                updateGuessButtonWinnerStyle();
+                disableTextField();
             }
     }
     clearTextFiled()
 });
 
-const resetButton = document.getElementById('button2');
+const resetButton = document.getElementById('resetButton');
 resetButton.addEventListener("click", function() {
 const canvas = document.getElementById("canvas");
 canvas.style.opacity = 0;
@@ -122,6 +149,8 @@ resetAllLives()
 
 let parentDiv = document.getElementById("guessedScores");
 parentDiv.replaceChildren([]);
+
+document.querySelector('body').style.backgroundColor = "#627881"
 })
 
 
@@ -253,25 +282,19 @@ window.addEventListener('resize', function () {
   resizeCanvas();
 });
 
+// Range Slider
+var slider = document.getElementById("myRange");
+var output = document.getElementById("guessField");
 
-// RANGE SLIDER?
-// var slider = document.getElementById("myRange");
-// var output = document.getElementById("demo");
-// output.innerHTML = slider.value; // Display the default slider value
-//
-// // Update the current slider value (each time you drag the slider handle)
-// slider.oninput = function() {
-//   output.innerHTML = this.value;
-// }
+slider.oninput = function() {
+  console.log(this.value)
+  output.value = this.value;
+}
 
 // RESET?
 // const head2 = document.getElementById('resetButton')
 //
 // head2.addEventListener('click', function () {
 //
+//
 //   document.querySelector('body').style.backgroundColor = "#627881"
-//   document.querySelector('p').textContent = 'New Game!'
-//   document.querySelector('p').style.fontSize = '100px'
-// });
-
-// HIGH SCORE?
