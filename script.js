@@ -28,10 +28,10 @@ function clearTextFiled() {
 }
 
 function updateTryHistory(guessedNumber) {
-    const paragraph = document.createElement("P");
-    paragraph.id = "paragraph";
+    const paragraph = document.createElement("p");
+    paragraph.className = "p";
     const text = document.createTextNode(guessedNumber);
-    let parentDiv = document.getElementById("guessedScores");
+    let parentDiv = document.getElementById("testDiv");
     paragraph.appendChild(text);
     parentDiv.appendChild(paragraph);
 }
@@ -43,10 +43,13 @@ function updateScore() {
 }
 
 function resetAllLives() {
-    for (let index = 0; 0 < 10; index++) {
-      let scoreLabel = document.getElementById(index);
-      scoreLabel.src = imagePaths[index];
-    }
+  let index = 0
+
+  while (index < 10) {
+    let scoreLabel = document.getElementById(String(index));
+    scoreLabel.src = imagePaths[index];
+    index++;
+  }
   }
 
 function updateGuessButtonWinnerStyle() {
@@ -67,11 +70,22 @@ function disableTextField() {
   let guessedNumber = document.getElementById('guessField').disabled = true;
 }
 
+function enableTextField() {
+  let guessedNumber = document.getElementById('guessField').disabled = false;
+}
+
+function updateHighScoreIfNeeded() {
+  const trophyImage = document.getElementById('trophyImage');
+  trophyImage.style.opacity = 1;
+  
+  const highscoreLabel = document.getElementById('highScoreLabel');
+  highscoreLabel.textContent = score;
+}
+
+
 const submitButton = document.getElementById('guessButton');
 submitButton.addEventListener('click', function () {
        let guessedNumber = getNum();
-       console.log(guessedNumber)
-       console.log(randomNumber);
       updateTryHistory(guessedNumber);
       const resetButton = document.getElementById('resetButton');
 const promptLabel = document.getElementById("promptLabel");
@@ -121,6 +135,11 @@ const promptLabel = document.getElementById("promptLabel");
                   updateGuessButtonWinnerStyle();
                   resetButton.style.backgroundColor = "green";
                   disableTextField();
+
+                  if (score > highscore) {
+                    highscore = score;
+                    updateHighScoreIfNeeded();
+                  }
               }
             }
 
@@ -128,7 +147,7 @@ const promptLabel = document.getElementById("promptLabel");
               const image = document.getElementById("image");
                 image.src = "images/crying.gif";
                 const promptLabel = document.getElementById("promptLabel")
-                promptLabel.textContent = "Game Over"
+                promptLabel.textContent = `Game Over! The number was ${randomNumber}`;
                 updateGuessButtonWinnerStyle();
                 disableTextField();
                 resetButton.style.backgroundColor = "green";
@@ -148,14 +167,14 @@ const promptLabel = document.getElementById("promptLabel");
 promptLabel.textContent = "";
 updateGuessButtonResetStyle();
 score = 10;
-let parentDiv = document.getElementById("guessedScores");
+resetAllLives();
+enableTextField();
+let parentDiv = document.getElementById("testDiv");
 const paragraph = document.getElementsByTagName("p");
-console.log(paragraph);
 let i = 0;
 while ( paragraph.length != 0) {
   parentDiv.removeChild(paragraph[i]);
 }
-resetAllLives();
 })
 
 
@@ -195,15 +214,7 @@ const confettiCount = 600;
 const gravity = 0.5;
 const terminalVelocity = 5;
 const drag = 0.075;
-const colors = [{ front: 'red', back: 'darkred' },
-{ front: 'green', back: 'darkgreen' },
-{ front: 'blue', back: 'darkblue' },
-{ front: 'yellow', back: 'darkyellow' },
-{ front: 'orange', back: 'darkorange' },
-{ front: 'pink', back: 'darkpink' },
-{ front: 'purple', back: 'darkpurple' },
-{ front: 'turquoise', back: 'darkturquoise' }];
-
+const colors = [{ front: 'green', back: 'darkgreen' }];
 
 //-----------Functions--------------
 resizeCanvas = () => {
@@ -286,20 +297,3 @@ render = () => {
 window.addEventListener('resize', function () {
   resizeCanvas();
 });
-
-// Range Slider
-// var slider = document.getElementById("myRange");
-// var output = document.getElementById("guessField");
-//
-// slider.oninput = function() {
-//   console.log(this.value)
-//   output.value = this.value;
-// }
-
-// RESET?
-// const head2 = document.getElementById('resetButton')
-//
-// head2.addEventListener('click', function () {
-//
-//
-//   document.querySelector('body').style.backgroundColor = "#627881"

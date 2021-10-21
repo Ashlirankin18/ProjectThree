@@ -169,3 +169,31 @@ body {
   pointer-events: none;
   position: absolute;
 }
+
+.trophyImage {
+  opacity: 0%;
+  height: 100px;
+  width: 100px;
+}
+
+.highScoreLabel {
+  color: white;
+  font-size: x-large;
+}
+
+.testDiv {
+  width: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.p {
+float: left;
+display: block;
+margin-left: auto;
+margin-right: auto;
+position: relative;
+padding-left: 25%;
+}
