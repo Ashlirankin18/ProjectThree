@@ -94,7 +94,7 @@ const promptLabel = document.getElementById("promptLabel");
             image.src = "images/eyeroll.gif";
             promptLabel.textContent = "NO! Enter a number between 1 and 100!";
         } else {
-            guessedNumber = Number(getNum())
+            guessedNumber = Number(guessedNumber)
 
             if (guessedNumber === 0) {
                 const image = document.getElementById("image");
