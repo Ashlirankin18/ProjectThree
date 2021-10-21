@@ -1,10 +1,10 @@
 body {
-  background-color: black;
+  background-color: #D6B7A2;
 }
 
-.topBar {
-  width: 79.7%;
-  float: left;
+.instructions {
+  color: white;
+  text-align: center;
   text-transform: uppercase;
   animation: movetopBar 15s linear infinite;
 }
@@ -18,9 +18,9 @@ body {
   height: 600px;
   width: 80%;
   background: #fbceb1;
-  margin-left: 10%;
+  margin-left: 9.5%;
   margin-top: 5%;
-  position: relative;
+  position: absolute;
   text-align: center;
   border-radius: 15px;
   float: left;
@@ -33,17 +33,20 @@ body {
   margin-left: 10%;
   position: absolute;
   border-radius: 15px;
+  text-align: center;
 }
 
 .sliderTextContainer {
-  border: 2px solid red;
   width: 54.5%;
-  position: absolute;
-  margin: 30% 0% 0% 15%;
+  height: 50px;
+  position: relative;
+  margin-top: 8%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sliderContainer {
-  border: 2px solid blue;
   width: 40%;
   margin-top: 2.5%;
   position: relative;
@@ -52,28 +55,35 @@ body {
 
 .textField {
   height: 50px;
-  width: 40%;
-  margin-left: 10%;
+  width: 100%;
   border: none;
-  border-bottom: 2px solid white;
   border-radius: 10px;
   position: relative;
   float: left;
   text-align: center;
   font-size: 16px;
-  color: black;
+  color: white;
+  background-color: #D6B7A2;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
 }
 
 .buttons {
   height: 50px;
-  width: 40%;
-  top: 60%;
-  margin-left: 22%;
+  width: 70%;
+  top: 13%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 
 .button {
-  background-color: white;
+  color: white;
+  background-color: #D6B7A2;
   float: left;
   height: 90%;
   width: 40%;
@@ -82,7 +92,8 @@ body {
 }
 
 .button2 {
-  background-color: white;
+  color: white;
+  background-color: #D6B7A2;
   float: right;
   height: 90%;
   width: 40%;
@@ -91,7 +102,7 @@ body {
 }
 
 .scoreContainer {
-  border-left: 2px solid black;
+  border-left: 2px solid #D6B7A2;
   float: left;
   height: 99%;
   width: 20%;
@@ -101,25 +112,28 @@ body {
 
 .guessedScores {
   height: 49%;
+  color: white;
+  padding-top: 5px;
 }
 
 .childGuessedScores {
-  background-color: white;
   width: 50%;
   position: relative;
 }
 
 .highScores {
+  color: white;
   height: 49%;
-  border-top: 2px solid black;
+  width: 99%;
+  border-top: 2px solid #D6B7A2;
+  padding-top: 5px;
 }
 
 .imageDiv {
-  border: 2px solid white;
-  position: absolute;
-  text-align: center;
-  margin-left: 37%;
-  margin-top: 15%;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .imageLives {
@@ -128,11 +142,18 @@ body {
 }
 
 .livesDiv {
-  padding-top: 5%;
+  margin-left: 4%;
+  margin-top: 25px;
+  position: absolute;
 }
 
 .image {
-  position: absolute;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .promptLabel {

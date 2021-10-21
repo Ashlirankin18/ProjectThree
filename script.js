@@ -30,7 +30,7 @@ function clearTextFiled() {
 function updateTryHistory(guessedNumber) {
     const paragraph = document.createElement("P");
     const text = document.createTextNode(guessedNumber);
-    let parentDiv = document.getElementById("guessedScores");
+    let parentDiv = document.getElementById("childGuessedScores");
     paragraph.appendChild(text);
     parentDiv.appendChild(paragraph);
 }
@@ -42,13 +42,11 @@ function updateScore() {
 }
 
 function resetAllLives() {
-  if (score < 10) {
     for (let index = 0; 0 < 10; index++) {
       let scoreLabel = document.getElementById(index);
       scoreLabel.src = imagePaths[index];
     }
   }
-}
 
 function updateGuessButtonWinnerStyle() {
   const guessButton = document.getElementById('guessButton');
@@ -61,6 +59,7 @@ function updateGuessButtonResetStyle() {
   const guessButton = document.getElementById('guessButton');
   guessButton.style.color = "white";
   guessButton.disabled = false;
+  guessButton.style.backgroundColor = "#D6B7A2";
 }
 
 function disableTextField() {
@@ -73,62 +72,99 @@ submitButton.addEventListener('click', function () {
        console.log(guessedNumber)
        console.log(randomNumber);
       updateTryHistory(guessedNumber);
+      const resetButton = document.getElementById('resetButton');
 const promptLabel = document.getElementById("promptLabel");
 
         if (guessedNumber.length === 0) {
             const image = document.getElementById("image");
-            image.src = "images/speak_no_evil_monkey.gif";
+            image.src = "images/eyeroll.gif";
             promptLabel.textContent = "NO!";
         } else {
             guessedNumber = Number(getNum())
 
             if (guessedNumber === 0) {
                 const image = document.getElementById("image");
-                image.src = "images/woman_facepalming.gif";
+                image.src = "images/eyeroll.gif";
                 promptLabel.textContent = "WRONG! Number must be between 1 and 100!";
                 updateScore();
+            } else {
+              if (guessedNumber > 100) {
+                  const image = document.getElementById("image");
+                  image.src = "images/eyeroll.gif";
+                  promptLabel.textContent = "Guess again!";
+                  updateScore();
+              }
+
+              if (randomNumber < guessedNumber) {
+                  const image = document.getElementById("image");
+                  image.src = "images/walkaway.gif";
+                  promptLabel.textContent = "Lower!";
+                  updateScore();
+              }
+
+              if (randomNumber > guessedNumber) {
+                  const image = document.getElementById("image");
+                  image.src = "images/dontknow.gif";
+                  promptLabel.textContent = "Higher!";
+                  updateScore();
+              }
+
+              if (guessedNumber === randomNumber) {
+                  const image = document.getElementById("image");
+                  image.src = "images/winner.gif";
+                  promptLabel.textContent = "WINNER!";
+                  initConfetti();
+                  const canvas = document.getElementById("canvas");
+                  canvas.style.opacity = 1;
+                  render();
+                  updateGuessButtonWinnerStyle();
+                  resetButton.style.backgroundColor = "green";
+                  disableTextField();
+              }
             }
 
-            if (guessedNumber > 100 || guessedNumber < 1) {
-                const image = document.getElementById("image");
-                image.src = "images/woman_facepalming.gif";
-                promptLabel.textContent = "Guess again!";
-                updateScore();
-            }
-
-            if (randomNumber < guessedNumber) {
-                const image = document.getElementById("image");
-                image.src = "images/backhand_index_pointing_down.gif";
-                promptLabel.textContent = "Lower!";
-                updateScore();
-            }
-
-            if (randomNumber > guessedNumber) {
-                const image = document.getElementById("image");
-                image.src = "images/backhand_index_pointing_up.gif";
-                promptLabel.textContent = "Higher!";
-                updateScore();
-            }
-
-            if (guessedNumber === randomNumber) {
-                const image = document.getElementById("image");
-                image.src = "images/trophy.gif";
-                promptLabel.textContent = "WINNER!";
-                initConfetti();
-                const canvas = document.getElementById("canvas");
-                canvas.style.opacity = 1;
-                render();
-                updateGuessButtonWinnerStyle();
-                disableTextField();
-            }
+            // if (guessedNumber > 100 || guessedNumber < 1) {
+            //     const image = document.getElementById("image");
+            //     image.src = "images/eyeroll.gif";
+            //     promptLabel.textContent = "Guess again!";
+            //     updateScore();
+            // }
+            //
+            // if (randomNumber < guessedNumber) {
+            //     const image = document.getElementById("image");
+            //     image.src = "images/walkaway.gif";
+            //     promptLabel.textContent = "Lower!";
+            //     updateScore();
+            // }
+            //
+            // if (randomNumber > guessedNumber) {
+            //     const image = document.getElementById("image");
+            //     image.src = "images/dontknow.gif";
+            //     promptLabel.textContent = "Higher!";
+            //     updateScore();
+            // }
+            //
+            // if (guessedNumber === randomNumber) {
+            //     const image = document.getElementById("image");
+            //     image.src = "images/winner.gif";
+            //     promptLabel.textContent = "WINNER!";
+            //     initConfetti();
+            //     const canvas = document.getElementById("canvas");
+            //     canvas.style.opacity = 1;
+            //     render();
+            //     updateGuessButtonWinnerStyle();
+            //     resetButton.style.backgroundColor = "green";
+            //     disableTextField();
+            // }
 
             if (0 === score) {
               const image = document.getElementById("image");
-                image.src = "images/bomb.gif";
+                image.src = "images/crying.gif";
                 const promptLabel = document.getElementById("promptLabel")
                 promptLabel.textContent = "Game Over"
                 updateGuessButtonWinnerStyle();
                 disableTextField();
+                resetButton.style.backgroundColor = "green";
             }
     }
     clearTextFiled()
@@ -138,17 +174,18 @@ const resetButton = document.getElementById('resetButton');
 resetButton.addEventListener("click", function() {
 const canvas = document.getElementById("canvas");
 canvas.style.opacity = 0;
-
+resetButton.style.backgroundColor = "#D6B7A2";
 const image = document.getElementById("image");
-image.src = "images/face_with_rolling_eyes.gif";
+image.src = "images/letsparty.gif";
 const promptLabel = document.getElementById("promptLabel");
-promptLabel.textContent = "Test your luck!";
+promptLabel.textContent = "";
 updateGuessButtonResetStyle();
 score = 10;
-resetAllLives()
+resetAllLives();
 
 let parentDiv = document.getElementById("guessedScores");
 parentDiv.replaceChildren([]);
+
 })
 
 
@@ -281,13 +318,13 @@ window.addEventListener('resize', function () {
 });
 
 // Range Slider
-var slider = document.getElementById("myRange");
-var output = document.getElementById("guessField");
-
-slider.oninput = function() {
-  console.log(this.value)
-  output.value = this.value;
-}
+// var slider = document.getElementById("myRange");
+// var output = document.getElementById("guessField");
+//
+// slider.oninput = function() {
+//   console.log(this.value)
+//   output.value = this.value;
+// }
 
 // RESET?
 // const head2 = document.getElementById('resetButton')

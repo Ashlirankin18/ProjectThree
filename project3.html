@@ -6,18 +6,23 @@
     <link rel="stylesheet" href="project3.css">
   </head>
   <body>
+    <canvas class="confetti" id="canvas"></canvas>
+
+    <div class="instructions">
+      <div class="slide"><h3>Guess the number between 1 and 100!</h3></div>
+    </div>
 
       <div class="interface">
         <div class="topBar">
-          <div class="instructions">
-            <div class="slide"><h3>Guess the number between 1 and 100!</h3></div>
-          </div>
         </div>
 
         <div class="scoreContainer">
-          <div> Guessed Scores</div>
+
           <div id ="guessedScores" class="guessedScores">
-           
+            Guessed Scores
+            <div id="childGuessedScores" class="childGuessedScores">
+
+            </div>
           </div>
 
           <div class="highScores">
@@ -26,30 +31,33 @@
 
         </div>
 
+        <div class="livesDiv">
+
+          <img id="0" class="imageLives" src="images/0030.png" alt="" srcset="">
+          <img id="1" class="imageLives" src="images/0031.png" alt="" srcset="">
+          <img id="2" class="imageLives" src="images/0032.png" alt="" srcset="">
+          <img id="3" class="imageLives" src="images/0033.png" alt="" srcset="">
+          <img id="4" class="imageLives" src="images/0034.png" alt="" srcset="">
+          <img id="5" class="imageLives" src="images/0035.png" alt="" srcset="">
+          <img id="6" class="imageLives" src="images/0036.png" alt="" srcset="">
+          <img id="7" class="imageLives" src="images/0037.png" alt="" srcset="">
+          <img id="8" class="imageLives" src="images/0038.png" alt="" srcset="">
+          <img id="9" class="imageLives" src="images/0039.png" alt="" srcset="">
+        </div>
+
         <div class="activeInterface">
 
-            <img id="0" class="imageLives" src="images/0030.png" alt="" srcset="">
-            <img id="1" class="imageLives" src="images/0031.png" alt="" srcset="">
-            <img id="2" class="imageLives" src="images/0032.png" alt="" srcset="">
-            <img id="3" class="imageLives" src="images/0033.png" alt="" srcset="">
-            <img id="4" class="imageLives" src="images/0034.png" alt="" srcset="">
-            <img id="5" class="imageLives" src="images/0035.png" alt="" srcset="">
-            <img id="6" class="imageLives" src="images/0036.png" alt="" srcset="">
-            <img id="7" class="imageLives" src="images/0037.png" alt="" srcset="">
-            <img id="8" class="imageLives" src="images/0038.png" alt="" srcset="">
-            <img id="9" class="imageLives" src="images/0039.png" alt="" srcset="">
-           </div>
-         <div id="imageDiv" class="imageDiv">
-           <img id="image" src="images/face_with_rolling_eyes.gif" alt="" srcset="">
-           <h2 id="promptLabel" class="promptLabel">Test your luck!</h2>
-         </div>
 
+         <div id="imageDiv" class="imageDiv">
+           <img class="image" id="image" src="images/letsparty.gif" alt="" srcset="">
+           <h2 id="promptLabel" class="promptLabel"></h2>
+         </div>
 
         <div class="sliderTextContainer">
 
-          <div class="sliderContainer">
+          <!-- <div class="sliderContainer">
            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-          </div>
+          </div> -->
 
           <div class="textFieldDiv">
             <input id="guessField" class="textField" placeholder="GUESS!" type="text" name="" value="">
@@ -62,11 +70,10 @@
           <button id= "guessButton" class="button" type="button" name="button">GUESS</button>
 
           <button id="resetButton" class="button2" type="button" name="button">RESET</button>
-
         </div>
 
-        </div>
-        <canvas class="confetti" id="canvas"></canvas>
+
+        <!-- <canvas class="confetti" id="canvas"></canvas> -->
       </div>
     <script type="text/javascript" src="script.js">
     </script>
