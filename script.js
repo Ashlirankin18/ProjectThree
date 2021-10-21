@@ -149,8 +149,6 @@ resetAllLives()
 
 let parentDiv = document.getElementById("guessedScores");
 parentDiv.replaceChildren([]);
-
-document.querySelector('body').style.backgroundColor = "#627881"
 })
 
 
